@@ -4,9 +4,11 @@
     android:fillViewport="true">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="vertical" android:padding="20dp">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Chime" android:textSize="32sp" android:textStyle="bold"
-            android:layout_marginBottom="12dp" />
+       <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="Chime" android:textSize="32sp" android:textStyle="bold" />
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="by Shaik Ziya" android:textSize="16sp"
+    android:layout_marginBottom="16dp" />
         <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/swEnabled" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:text="Chimes enabled" android:textSize="18sp" />
@@ -74,5 +76,8 @@
         </LinearLayout>
         <TextView android:id="@+id/tvNext" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginTop="20dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:text="Made by Shaik Ziya" android:gravity="center"
+    android:layout_marginTop="32dp" android:alpha="0.6" />
     </LinearLayout>
 </ScrollView>
