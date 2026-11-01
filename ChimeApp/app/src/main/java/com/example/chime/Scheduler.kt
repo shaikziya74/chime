@@ -25,16 +25,28 @@ object Scheduler {
         return PendingIntent.getBroadcast(ctx, 0, i, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     }
 
-    fun canExact(ctx: Context): Boolean = true // alarm-clock alarms need no extra permission
+    fun canExact(ctx: Context): Boolean {
+        val am = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.S || am.canScheduleExactAlarms()
+    }
 
     fun schedule(ctx: Context) {
         val am = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val t = nextBoundary()
-        val show = PendingIntent.getActivity(
-            ctx, 1, Intent(ctx, MainActivity::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        am.setAlarmClock(AlarmManager.AlarmClockInfo(t, show), pending(ctx, t))
+        val pi = pending(ctx, t)
+        try {
+            if (canExact(ctx)) {
+                val show = PendingIntent.getActivity(
+                    ctx, 1, Intent(ctx, MainActivity::class.java),
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+                am.setAlarmClock(AlarmManager.AlarmClockInfo(t, show), pi)
+            } else {
+                am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
+            }
+        } catch (e: SecurityException) {
+            try { am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi) } catch (_: Exception) {}
+        }
     }
 
     fun cancel(ctx: Context) {
