@@ -16,10 +16,34 @@ jobs:
           gradle-version: 8.7
       - name: Accept Android licenses
         run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+      - name: Write settings file
+        working-directory: ChimeApp
+        run: |
+          rm -f settings.gradle settings.gradle.kts
+          cat > settings.gradle.kts <<'EOF'
+          pluginManagement {
+              repositories {
+                  google()
+                  mavenCentral()
+                  gradlePluginPortal()
+              }
+          }
+          dependencyResolutionManagement {
+              repositories {
+                  google()
+                  mavenCentral()
+              }
+          }
+          rootProject.name = "Chime"
+          include(":app")
+          EOF
+          ls -la
+          echo "--- app folder ---"
+          ls -la app
       - name: Build debug APK
-        working-directory: ChimeApp   # <-- change if your folder has another name
+        working-directory: ChimeApp
         run: gradle assembleDebug
       - uses: actions/upload-artifact@v4
         with:
           name: Chime-APK
-          path: ChimeApp/app/build/outputs/apk/debug/app-debug.apk   # <-- and here
+          path: ChimeApp/app/build/outputs/apk/debug/app-debug.apk
