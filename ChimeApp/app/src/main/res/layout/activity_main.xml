@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Chime" android:textSize="32sp" android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/swEnabled" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Chimes enabled" android:textSize="18sp" />
+        <Button android:id="@+id/btnExact" style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Allow exact alarms (needed for on-time chimes)" android:visibility="gone" />
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/swHour" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Chime on the hour (:00)" />
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/swHalf" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Chime on the half hour (:30)" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Hourly sound" android:textStyle="bold" android:layout_marginTop="20dp" />
+        <TextView android:id="@+id/tvHour" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button android:id="@+id/btnHourPick" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="Choose" />
+            <Button android:id="@+id/btnHourReset" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="Default" />
+            <Button android:id="@+id/btnHourTest" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="Play" />
+        </LinearLayout>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Half-hour sound" android:textStyle="bold" android:layout_marginTop="16dp" />
+        <TextView android:id="@+id/tvHalf" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button android:id="@+id/btnHalfPick" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="Choose" />
+            <Button android:id="@+id/btnHalfReset" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="Default" />
+            <Button android:id="@+id/btnHalfTest" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+                android:text="Play" />
+        </LinearLayout>
+        <TextView android:id="@+id/tvVolume" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginTop="20dp" />
+        <SeekBar android:id="@+id/sbVolume" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:max="100" />
+        <TextView android:id="@+id/tvMax" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginTop="12dp" />
+        <SeekBar android:id="@+id/sbMax" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:max="57" />
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/swAlarm" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Use alarm volume (rings even on silent)" android:layout_marginTop="12dp" />
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/swQuiet" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Quiet hours (no chimes)" android:layout_marginTop="8dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button android:id="@+id/btnQStart" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" />
+            <Button android:id="@+id/btnQEnd" style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView android:id="@+id/tvNext" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginTop="20dp" />
+    </LinearLayout>
+</ScrollView>
